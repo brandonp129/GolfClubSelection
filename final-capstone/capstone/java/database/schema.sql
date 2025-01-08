@@ -10,4 +10,14 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
+CREATE TABLE bags (
+    bag_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    bagName varchar(100) NOT NULL,
+
+
+
+
+)
+
 COMMIT TRANSACTION;
