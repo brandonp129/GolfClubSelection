@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users, bags, clubs;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -14,10 +14,14 @@ CREATE TABLE bags (
     bag_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
     bagName varchar(100) NOT NULL,
+);
 
-
-
-
-)
+CREATE TABLE clubs (
+    club_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    bagName varchar(100) NOT NULL,
+    clubDistance INT NOT NULL,
+    clubName varchar(100) NOT NULL,
+);
 
 COMMIT TRANSACTION;
