@@ -2,7 +2,7 @@ package com.techelevator.model;
 
 import java.util.List;
 
-public class GolfBag {
+public class GolfBags {
 
     private int bagId;
 
@@ -13,7 +13,7 @@ public class GolfBag {
     private String name;
 
 
-    public GolfBag() {
+    public GolfBags() {
 
     }
 
