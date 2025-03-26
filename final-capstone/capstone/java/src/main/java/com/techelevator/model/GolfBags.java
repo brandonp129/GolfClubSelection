@@ -48,4 +48,10 @@ public class GolfBags {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    public int getgolfBagId() {
+
+        return bagId;
+    }
 }

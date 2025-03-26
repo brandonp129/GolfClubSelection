@@ -9,6 +9,16 @@ public class Menu {
 
     private static final Scanner in = new Scanner(System.in);
 
+
+    public String getUsername() {
+        System.out.println("Please enter your username");
+
+        String username = in.nextLine();
+
+        return username;
+    }
+
+
     public int getCourseElevation() {
 
         System.out.println("To start we need some information: ");
