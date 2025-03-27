@@ -1,7 +1,7 @@
 package com.techelevator;
 
 import com.techelevator.Factors.Calculations;
-import com.techelevator.TemporaryView.Menu;
+import com.techelevator.TemporaryView.Services.Menu;
 
 /*
  * This class should control the workflow of the application, but not do any other work
@@ -76,6 +76,10 @@ public class ApplicationCLI {
         }
 
         System.exit(0);
+    }
+
+    private void loginMenu() {
+
     }
 
     public static void main(String[] args) {

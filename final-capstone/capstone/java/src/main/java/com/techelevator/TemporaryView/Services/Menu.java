@@ -1,4 +1,4 @@
-package com.techelevator.TemporaryView;
+package com.techelevator.TemporaryView.Services;
 
 import java.util.Scanner;
 
@@ -16,6 +16,14 @@ public class Menu {
         String username = in.nextLine();
 
         return username;
+    }
+
+    public void printLoginMenu() {
+        System.out.println();
+        System.out.println("1: Register");
+        System.out.println("2: Login");
+        System.out.println("0: Exit");
+        System.out.println();
     }
 
 
