@@ -8,7 +8,7 @@ public class GolfBags {
 
     private int userId;
 
-    private List golfClubs;
+    private List<GolfClubs> golfClubs;
 
     private String name;
 
