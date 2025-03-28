@@ -7,8 +7,6 @@ import java.util.List;
 public interface GolfClubDao {
 
     //need to come back to add parameters
-    void addGolfClubToDatabaseAndGolfBag();
-
 
     //need to come back to add parameters
     List<Integer> getListOfGolfClubsInGolfBag();
@@ -17,4 +15,5 @@ public interface GolfClubDao {
 
     void deleteGolfClubById(int GolfClubId);
 
+    GolfClubs addGolfClubToDatabaseAndGolfBag(int bagId, GolfClubs golfClub);
 }
