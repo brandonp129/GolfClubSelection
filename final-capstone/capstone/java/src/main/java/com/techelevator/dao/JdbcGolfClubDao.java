@@ -30,6 +30,12 @@ public class JdbcGolfClubDao implements GolfClubDao{
     @Override
     public void deleteGolfClubById(int GolfClubId) {
 
+        String sqlToDeleteClubFromDatabase = "DELETE FROM clubs WHERE club_id = ?";
+        jdbcTemplate.update(sqlToDeleteClubFromDatabase, GolfClubId);
+
+        String sqlToDeleteFromUserBag = "DELETE FROM user_bags WHERE club_id = ?;";
+        jdbcTemplate.update(sqlToDeleteFromUserBag, GolfClubId);
+
     }
 
     @Override

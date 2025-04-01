@@ -37,6 +37,12 @@ public class JdbcGolfBagDao implements GolfBagDao {
 
     @Override
     public void deleteGolfBagByBagId(int golfBagId) {
+        String sqlToDeleteBagToDatabase = "DELETE FROM bags WHERE bag_id = ?";
+        jdbcTemplate.update(sqlToDeleteBagToDatabase, golfBagId);
+
+        String sqlToDeleteFromUserBag = "DELETE FROM user_bags WHERE bag_id = ?;";
+        jdbcTemplate.update(sqlToDeleteFromUserBag, golfBagId);
+
 
     }
 }
