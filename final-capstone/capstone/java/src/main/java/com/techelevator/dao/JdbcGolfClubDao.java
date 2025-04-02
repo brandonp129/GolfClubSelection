@@ -1,7 +1,9 @@
 package com.techelevator.dao;
 
 import com.techelevator.ApplicationCLI;
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.GolfClubs;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -25,7 +27,19 @@ public class JdbcGolfClubDao implements GolfClubDao{
 
     @Override
     public GolfClubs getGolfClubById(int golfClubId) {
-        return null;
+
+        GolfClubs golfClub = null;
+        String sql = "SELECT club_id, club_name, club_distance, club_type FROM clubs WHERE club_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, golfClubId);
+            if (results.next()) {
+                golfClub = mapRowToGolfClub(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return golfClub;
+
     }
 
     @Override
