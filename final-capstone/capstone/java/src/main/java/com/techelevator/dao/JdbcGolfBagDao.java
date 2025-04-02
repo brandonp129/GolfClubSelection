@@ -1,7 +1,9 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.GolfBags;
+import com.techelevator.model.GolfClubs;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -44,5 +46,13 @@ public class JdbcGolfBagDao implements GolfBagDao {
         jdbcTemplate.update(sqlToDeleteFromUserBag, golfBagId);
 
 
+    }
+
+    private GolfBags mapRowToGolfClub(SqlRowSet rs) {
+        GolfBags bag = new GolfBags();
+        bag.setBagId(rs.getInt("bag_id"));
+        bag.setName(rs.getString("club_name"));
+        bag.setUserId(rs.getInt("club_distance"));
+        return bag;
     }
 }

@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.ApplicationCLI;
 import com.techelevator.model.GolfClubs;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -51,6 +52,15 @@ public class JdbcGolfClubDao implements GolfClubDao{
         jdbcTemplate.update(sqlToAddClubToGolfBag, bagId, golfClub.getClubId());
 
         return golfClub;
+    }
+
+    private GolfClubs mapRowToGolfClub(SqlRowSet rs) {
+        GolfClubs club = new GolfClubs();
+        club.setClubId(rs.getInt("club_id"));
+        club.setClubName(rs.getString("club_name"));
+        club.setClubDistance(rs.getInt("club_distance"));
+        club.setClubType(rs.getString("club_type"));
+        return club;
     }
 
     }
