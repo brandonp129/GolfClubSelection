@@ -33,7 +33,7 @@ public class JdbcGolfBagDao implements GolfBagDao {
     }
 
     @Override
-    public List<Integer> getListOfUserGolfBags() {
+    public List<GolfClubs> getListOfUserGolfBags() {
         return null;
     }
 

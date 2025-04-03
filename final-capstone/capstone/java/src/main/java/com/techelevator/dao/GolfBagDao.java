@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 
 import com.techelevator.model.GolfBags;
+import com.techelevator.model.GolfClubs;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public interface GolfBagDao {
     GolfBags addGolfBagToDataBaseAndUserList(int userId, GolfBags golfBag);
 
     //need to come back to add parameters
-    List<Integer> getListOfUserGolfBags();
+    List<GolfClubs> getListOfUserGolfBags();
 
     void deleteGolfBagByBagId(int golfBagId);
 }
