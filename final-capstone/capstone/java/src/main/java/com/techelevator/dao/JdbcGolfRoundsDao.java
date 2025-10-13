@@ -23,7 +23,7 @@ public class JdbcGolfRoundsDao implements GolfRoundsDao {
         String sql = "SELECT round_id, user_id, date_played, course_name, total_score, notes FROM rounds WHERE round_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, golfRoundId);
-            if results.next()) {
+            if (results.next()) {
                 golfRound = mapRowToGolfRound(results);
             }
         } catch (CannotGetJdbcConnectionException e) {
@@ -31,6 +31,24 @@ public class JdbcGolfRoundsDao implements GolfRoundsDao {
         }
         return golfRound;
     }
+
+    @Override
+    public GolfRounds addGolfRoundToDataBaseAndUser (int userId, GolfRounds round) {
+
+        String sqlToAddRoundToDatabase = "INSERT INTO rounds (user_id, date_played, total_score, notes)"
+                + "VALUES (?, ?, ?, ?) returning round_id;";
+
+        int newRoundId = jdbcTemplate.queryForObject(sqlToAddRoundToDatabase, int.class, round.getUserId(),
+                round.getDatePlayed(), round.getTotalScore(), round.getNotes());
+        round.setRoundId(newRoundId);
+
+        String sqlToAddRoundToUser = "INSERT INTO round_players (user_id, round_id) VALUES (?, ?)";
+        jdbcTemplate.update(sqlToAddRoundToUser, userId, round.getRoundId());
+
+        return round;
+    }
+
+
 
     private GolfRounds mapRowToGolfRound(SqlRowSet results) {
         GolfRounds round = new GolfRounds();

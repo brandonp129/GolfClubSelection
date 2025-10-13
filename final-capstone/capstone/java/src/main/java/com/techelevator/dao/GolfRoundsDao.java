@@ -4,4 +4,6 @@ import com.techelevator.model.GolfRounds;
 
 public interface GolfRoundsDao {
     GolfRounds getGolfRoundsById(int golfRoundId);
+
+    GolfRounds addGolfRoundToDataBaseAndUser(int userId, GolfRounds round);
 }
